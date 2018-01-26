@@ -1,0 +1,60 @@
+<html ng-app="toDoApp">
+
+    <head>
+        <title>AngularJs | Todo App </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/checklist-model/0.11.0/checklist-model.min.js"></script>
+        <script src='app.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="todo.css"/>
+    </head>
+
+    <body>
+
+        <div id="todo-app" ng-controller="toDoAppCtrl as ctrl" style="font-size:20px;" >
+            <div>
+
+                <div class="rect" style="height:50px; width:100%; background-color:#dbdbdb; color:#337ab7; font-size:30px; vertical-align:middle; margin-bottom:20px; ">
+                    Todo App
+                </div>
+                <p>Add Todo: </p>
+                <form ng-submit="ctrl.addToDo()" >
+                    <div class=""></div>
+                    <input class="form-control add-text" required type="text" ng-model="ctrl.newTodo" placeholder="Enter Task"/>
+                <button class="btn btn-primary btn-md add-btn" type="submit" >Add</button>
+                </form>
+            </div>
+
+
+            <p>Your Todos:</p>
+            <button class="btn btn-primary btn-md" ng-click="ctrl.checkAll()" >Check all</button>
+            <button class="btn btn-primary btn-md" ng-click="ctrl.uncheckAll()" >Uncheck all</button> 
+            <button class="btn btn-primary btn-md" ng-click="ctrl.deleteSelected()">Delete Selected</button> 
+            <button class="btn btn-primary btn-md" ng-click="ctrl.deleteAll()">Delete All</button> <br><br>
+
+
+            
+
+            <div class="tabuler-data" style="padding: 0px; margin-left: 33%; " ng-if="ctrl.todos.length>0">
+                    <table class="table table-bordered table-striped" style="margin-bottom: 0px; width: 50%;" >
+                            <tr>
+                                <th>-</th>
+                                <th>Title</th>
+                                <th>-</th>
+                            </tr>
+                            <tr ng-repeat="todo in ctrl.todos track by $index">
+                                <td style=""><input type="checkbox" checklist-model="ctrl.selected.items" checklist-value="todo" /></td>
+                                <td style="">{{todo.value}}</td>
+                                <td style=""><span ng-click="ctrl.triggerDeleteMode($index)" class="glyphicon glyphicon-trash"></span></td>
+                            </tr>
+                            
+                                                   
+                    </table>
+                </div> 
+
+        </div>
+        
+    </body>
+</html>

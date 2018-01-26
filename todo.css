@@ -1,0 +1,12 @@
+#todo-app {
+    margin: 1em;
+    text-align: center;
+}
+
+.add-text{
+    display: inline-block!important;
+    width: auto!important;
+}
+.add-btn{
+    margin-top: -3px;
+}
